@@ -118,7 +118,7 @@
 
 % Chapter Style Options
 \newcommand{\etdChapterStyle}[1]{\MakeUppercase{#1}}
-\DeclareOption{plainchapterheads}{\renewcommand{\etdChapterStyle}[1]{#1}}
+\etdArg{plainchapterheads}{\renewcommand{\etdChapterStyle}[1]{#1}}
 
 % Options for setting point size
 \etdDeclVarArg{\etdPtSize}{\etdDefaultPointSize}
@@ -138,8 +138,8 @@
 
 % Options to set chapter head style
 \newcommand{\etdChapterHeadFormat}[1]{\MakeUppercase{#1}}
-\etdArg{plainchaptertitles}{\renewcommand{\etdChapterHeadFormat}[1]{#1}}
 \etdArg{capschaptertitles}{\newcommand{\etdChapterHeadFormat}[1]{\MakeUppercase{#1}}}
+\etdArg{plainchaptertitles}{\renewcommand{\etdChapterHeadFormat}[1]{#1}}
 
 % Enable/Disable printing of CHAPTER and APPENDIX in TOC
 \let\iftocflag=\iffalse
@@ -197,8 +197,8 @@
 	\newpage
 	\addcontentsline{toc}{chapter}{References}
 	\begin{singlespace}
-		\bibliography{ft2,master,refs}
-		\bibliographystyle{plain}
+          \bibliography{bibliography}
+          \bibliographystyle{plain}
 	\end{singlespace}
 }
 
