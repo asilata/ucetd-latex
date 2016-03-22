@@ -119,6 +119,7 @@
 % Chapter Style Options
 \newcommand{\etdChapterStyle}[1]{\MakeUppercase{#1}}
 \etdArg{plainchapterheads}{\renewcommand{\etdChapterStyle}[1]{#1}}
+\etdArg{scchapterheads}{\renewcommand{\etdChapterStyle}[1]{\textsc{#1}}}
 
 % Options for setting point size
 \etdDeclVarArg{\etdPtSize}{\etdDefaultPointSize}
@@ -192,19 +193,19 @@
 \newcommand{\mainmatter}{\etdMainMatter}
 
 % Bibliography
-% Change ft2,master,refs below to point to your library.bib files
-\newcommand{\makebibliography}{
-	\newpage
-	\addcontentsline{toc}{chapter}{References}
-	\begin{singlespace}
-          \bibliography{bibliography}
-          \bibliographystyle{plain}
-	\end{singlespace}
+% Argument = bibliography file without the .bib extension.
+\newcommand{\makebibliography}[1]{
+  \newpage
+  \addcontentsline{toc}{chapter}{References}
+  \begin{singlespace}
+    \bibliography{#1}
+    \bibliographystyle{plain}
+  \end{singlespace}
 }
 
-%
+% 
 % Title page related commands
-%
+% 
 
 % Basic information
 \renewcommand{\title}[1]{\gdef\@title{#1}}
