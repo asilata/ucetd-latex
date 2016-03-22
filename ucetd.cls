@@ -217,8 +217,8 @@
 
 % Output title page
 \renewcommand{\maketitle}{
-	\etdTitlePage
-	\etdPostTitle
+  \etdTitlePage
+  \etdPostTitle
 }
 
 % You MUST call this command where the title would normally be emitted if you omit the title page
@@ -340,22 +340,22 @@
 
 % Change the margins to fit requirements
 
-%%\setlength{\oddsidemargin}{-0.325in}  % really 1.5in
-%%\setlength{\evensidemargin}{-0.325in}  % really 1.5in
-%\setlength{\oddsidemargin}{0.in}
-%\setlength{\evensidemargin}{0.in}
-%%\setlength{\textwidth}{6.875in}
-%\setlength{\textwidth}{6.5in}
-%%\setlength{\topmargin}{0.in}   % really 1in
-%\setlength{\headheight}{-0.375in}
-%\setlength{\headsep}{0.in}
-%%\setlength{\textheight}{8.5in}
-%\setlength{\textheight}{9.3in}
-%\setlength{\footskip}{0.3in}
+%% \setlength{\oddsidemargin}{-0.325in}  % really 1.5in
+%% \setlength{\evensidemargin}{-0.325in}  % really 1.5in
+% \setlength{\oddsidemargin}{0.in}
+% \setlength{\evensidemargin}{0.in}
+%% \setlength{\textwidth}{6.875in}
+% \setlength{\textwidth}{6.5in}
+%% \setlength{\topmargin}{0.in}   % really 1in
+% \setlength{\headheight}{-0.375in}
+% \setlength{\headsep}{0.in}
+%% \setlength{\textheight}{8.5in}
+% \setlength{\textheight}{9.3in}
+% \setlength{\footskip}{0.3in}
 
-%%%%%%
+%%%%%% 
 %% Completely re-doing margins --mvz
-%%%%%%
+%%%%%% 
 
 % Main text box is the width/height of the paper minus 2in
 \setlength{\textwidth}{6.5in}
@@ -383,9 +383,9 @@
 % Changing where the page numbers go on pages that aren't the first
 % page of a chapter.
 
-%\pagestyle{myheadings}
-%\pagestyle{plain}
-%\markright{}
+% \pagestyle{myheadings}
+% \pagestyle{plain}
+% \markright{}
 
 % Make the table of contents, etc.,  single spaced
 %
