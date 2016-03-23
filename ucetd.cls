@@ -244,17 +244,10 @@
     \begin{center}
       {\Huge \color{gray}\thechapter}
 
-      \noindent \etdChapterStyle{#1}
+      \etdChapterHeadFormat{#1}
     \end{center}
     \vspace{1em}
-
-    % \etdChapterStyle{\@chapapp{ \thechapter}}  %  CHAPTER # or APPENDIX
-    
-    
-    % \etdChapterStyle{#1}                       %     TITLE OF CHAPTER
-
     \setlength{\topmargin}{0in}   % back to 1in
-
   }}
 
 
