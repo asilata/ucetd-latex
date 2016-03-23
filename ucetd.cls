@@ -139,22 +139,22 @@
 
 % Options to set chapter head style
 \newcommand{\etdChapterHeadFormat}[1]{\MakeUppercase{#1}}
-\etdArg{capschaptertitles}{\newcommand{\etdChapterHeadFormat}[1]{\MakeUppercase{#1}}}
 \etdArg{plainchaptertitles}{\renewcommand{\etdChapterHeadFormat}[1]{#1}}
+\etdArg{scchaptertitles}{\renewcommand{\etdChapterHeadFormat}[1]{\scshape{#1}}}
 
 % Enable/Disable printing of CHAPTER and APPENDIX in TOC
 \let\iftocflag=\iffalse
 \etdArg{tocchapterhead}{\let\iftocflag=\iftrue}
 
-%%
+%% 
 %% Load superclass for document
-%%
+%% 
 
 \etdSuperClass{\etdParentClass}{\etdPtSize}
 
-%%
+%% 
 %% Do some init stuff
-%%
+%% 
 
 % Ported from old file, sets up spacing between footnotes
 \RequirePackage[splitrule]{footmisc}
@@ -224,99 +224,108 @@
 % You MUST call this command where the title would normally be emitted if you omit the title page
 \newcommand{\omittitle}{\etdPostTitle}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Internal Formatting %%%%%%%%%%%%%%%%%%%%%%%%%
-%
+% 
 % The following was mostly ported from ccw_chithesis_YH with a few modifications
-%
+% 
 
 
 % Chapter/Section formatting
 \renewcommand{\@makechapterhead}[1]{{
 
-        \setlength{\topmargin}{0.5in}  	% really 1.5in, added by bph
-                                      			% to meet OAP standards
-        \normalfont\large\bfseries
-        \begin{center}
-        \etdChapterStyle{\@chapapp{ \thechapter}}  %  CHAPTER # or APPENDIX
-        
-        
-        \etdChapterStyle{#1}                       %     TITLE OF CHAPTER
-        \end{center}
-        \setlength{\topmargin}{0in}   % back to 1in
+    \setlength{\topmargin}{0.5in}  	% really 1.5in, added by bph
+    % to meet OAP standards
+    \normalfont\Large\bfseries
+    \begin{center}
+      {\Huge \color{gray}\thechapter}
 
-}}
+      \noindent \etdChapterStyle{#1}
+    \end{center}
+    \vspace{1em}
+
+    % \etdChapterStyle{\@chapapp{ \thechapter}}  %  CHAPTER # or APPENDIX
+    
+    
+    % \etdChapterStyle{#1}                       %     TITLE OF CHAPTER
+
+    \setlength{\topmargin}{0in}   % back to 1in
+
+  }}
+
+
 \renewcommand{\@makeschapterhead}[1]{{  
-        \setlength{\topmargin}{0.5in}   % really 1.5in, added by bph
-                                        % to meet OAP standards
-        \normalfont\large\bfseries
-        \begin{center}
-        \etdChapterHeadFormat{#1}                       %     TITLE OF CHAPTER
-        \end{center}
-        \setlength{\topmargin}{0in}   % back to 1in
-}}
+    \setlength{\topmargin}{0.5in}   % really 1.5in, added by bph
+    % to meet OAP standards
+    \normalfont\large\bfseries
+    \begin{center}
+      \etdChapterHeadFormat{#1}                       %     TITLE OF CHAPTER
+    \end{center}
+    \setlength{\topmargin}{0in}   % back to 1in
+  }}
+
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                                {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                {2.3ex \@plus.2ex}%
-                                {\normalfont\large\bfseries\centering}}
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  {2.3ex \@plus.2ex}%
+  {\normalfont\large\bfseries\centering}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                {1.5ex \@plus .2ex}%
-                                {\normalfont\large\itshape\centering}}
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\large\itshape\centering}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                                {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                {1.5ex \@plus .2ex}%
-                                {\normalfont\large}}
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\large}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                {3.25ex \@plus1ex \@minus.2ex}%
-                                {-1em}%
-                                {\normalfont\normalsize\bfseries}}
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                {3.25ex \@plus1ex \@minus .2ex}%
-                                {-1em}%
-                                {\normalfont\normalsize\itshape}}
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\itshape}}
 
 \renewcommand*\l@part[2]{%
   \ifnum \c@tocdepth >\m@ne
-    \addpenalty{-\@highpenalty}%
-    \vskip 1.0em \@plus\p@
-    \setlength\@tempdima{1.5em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode
-      \advance\leftskip\@tempdima
-      \hskip -\leftskip
-      {\bf \etdChapterHeadFormat{#1}}\nobreak
-      \hfil \nobreak\hb@xt@\@pnumwidth{\hss}\par
-      \penalty\@highpenalty
-    \endgroup
+  \addpenalty{-\@highpenalty}%
+  \vskip 1.0em \@plus\p@
+  \setlength\@tempdima{1.5em}%
+  \begingroup
+  \parindent \z@ \rightskip \@pnumwidth
+  \parfillskip -\@pnumwidth
+  \leavevmode
+  \advance\leftskip\@tempdima
+  \hskip -\leftskip
+  {\bf \etdChapterHeadFormat{#1}}\nobreak
+  \hfil \nobreak\hb@xt@\@pnumwidth{\hss}\par
+  \penalty\@highpenalty
+  \endgroup
   \fi}
 
 
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
-    \addpenalty{-\@highpenalty}%
-    \vskip 1.0em \@plus\p@
-    \setlength\@tempdima{1.5em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode
-      \advance\leftskip\@tempdima
-      \hskip -\leftskip
-      \etdChapterHeadFormat{#1}\nobreak
-% CCW: The following 3 lines add dots to the chapter TOC listings
-      \leaders\hbox{$\m@th
-        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
-        mu$}\hfill
-      \hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
-      \penalty\@highpenalty
-    \endgroup
+  \addpenalty{-\@highpenalty}%
+  \vskip 1.0em \@plus\p@
+  \setlength\@tempdima{1.5em}%
+  \begingroup
+  \parindent \z@ \rightskip \@pnumwidth
+  \parfillskip -\@pnumwidth
+  \leavevmode
+  \advance\leftskip\@tempdima
+  \hskip -\leftskip
+  \etdChapterHeadFormat{#1}\nobreak
+  % CCW: The following 3 lines add dots to the chapter TOC listings
+  \leaders\hbox{$\m@th
+    \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+    mu$}\hfill
+  \hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+  \penalty\@highpenalty
+  \endgroup
   \fi}
 
 % Add "CHAPTER"/"APPENDIX" headings to TOC before first of each.
@@ -332,7 +341,7 @@
   \fi%
   \old@chapter[{#1}]{#2}}
 \fi
- 
+
 % Change names of table of contents and bibliography
 
 \renewcommand{\contentsname}{Table of Contents}
@@ -388,7 +397,7 @@
 % \markright{}
 
 % Make the table of contents, etc.,  single spaced
-%
+% 
 % bph added lists of tables/figures to table of contents.
 % CCW fixed bug where multipage LOT/LOF were listed in TOC with wrong
 % page number.
