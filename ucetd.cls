@@ -18,88 +18,96 @@
 	\LoadClass[#2]{#1}
 }
 
-% Default copyright text
-\newcommand{\etdCopyrightText}{
-	\null\vfill
-	\centerline{Copyright \copyright\ \number\year\ by \@author}
-	\centerline{All Rights Reserved}
-	\vskip 15pt\relax
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Title page and front matter %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-% Preliminary sections following the table of contents and preceding the body are front matter
-\newcommand{\etdFrontMatter}[1]{
-	\chapter*{#1}
-	\addcontentsline{toc}{chapter}{#1}
-}
-
-% Special front matter that appears before the table of contents
-\newcommand{\etdPreTOCMatter}[1]{
-	\chapter*{}
-	\thispagestyle{empty}
-	\begin{center}
-		#1
-	\end{center}
-}
-
-% Starts the main matter of the document
-\newcommand{\etdMainMatter}{
-	\clearpage
-	% Switch to arabic numbers on pages
-	\pagenumbering{arabic}
+% UC ETD title page format
+\newcommand{\etdTitlePage} {
+  \begin{titlepage}
+    \begin{center}
+      \rule{0in}{0.55in} % Artificial extra [old=0.95in] margin. Why not vspace?
+      THE UNIVERSITY OF CHICAGO\\
+      \vspace{0.8in}
+      \MakeUppercase{\@title}\\
+      \vspace{0.8in}
+      A DISSERTATION SUBMITTED TO\\
+      THE FACULTY OF THE DIVISION OF THE \MakeUppercase{\@division}\\
+      IN CANDIDACY FOR THE DEGREE OF\\
+      \MakeUppercase{\@degree}\\
+      \ \\
+      DEPARTMENT OF \MakeUppercase{\@department}\\
+      \vspace{0.8in}
+      BY\\
+      \MakeUppercase{\@author}\\
+      \vspace{0.8in}
+      CHICAGO, ILLINOIS\\
+      \MakeUppercase{\@date}
+      \vspace*{0.45in}
+    \end{center}
+  \end{titlepage}
 }
 
 % Commands to follow the title page
 \newcommand{\etdPostTitle}{
-	% Setup page numbering
-	\pagenumbering{roman}
-	\addtocounter{page}{1}
+  % Setup page numbering
+  \pagenumbering{roman}
+  \addtocounter{page}{1}
 }
 
-% UC ETD title page format
-\newcommand{\etdTitlePage} {
-	\begin{titlepage}
-		\begin{center}
-			\rule{0in}{0.55in} % Artificial extra [old=0.95in] margin. Why not vspace?
-			THE UNIVERSITY OF CHICAGO\\
-			\vspace{0.8in}
-			\MakeUppercase{\@title}\\
-			\vspace{0.8in}
-			A DISSERTATION SUBMITTED TO\\
-			THE FACULTY OF THE DIVISION OF THE \MakeUppercase{\@division}\\
-			IN CANDIDACY FOR THE DEGREE OF\\
-			\MakeUppercase{\@degree}\\
-			\ \\
-			DEPARTMENT OF \MakeUppercase{\@department}\\
-			\vspace{0.8in}
-			BY\\
-			\MakeUppercase{\@author}\\
-			\vspace{0.8in}
-			CHICAGO, ILLINOIS\\
-			\MakeUppercase{\@date}
-			\vspace*{0.45in}
-		\end{center}
-	\end{titlepage}
+% Special front matter that appears before the table of contents
+\newcommand{\etdPreTOCMatter}[1]{
+  \chapter*{}
+  \thispagestyle{empty}
+  \begin{center}
+    #1
+  \end{center}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Default copyright text
+\newcommand{\etdCopyrightText}{
+  \null\vfill
+  \centerline{Copyright \copyright\ \number\year\ by \@author}
+  \centerline{All Rights Reserved}
+  \vskip 15pt\relax
+}
+
+% Preliminary sections following the table of contents and preceding the body are front matter
+\newcommand{\etdFrontMatter}[1]{
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+}
+
+%%%%%%%%%%%%%%% 
+% Main matter %
+%%%%%%%%%%%%%%% 
+% Starts the main matter of the document
+\newcommand{\etdMainMatter}{
+  \clearpage
+  % Switch to arabic numbers on pages
+  \pagenumbering{arabic}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 
-%%
+%% 
 %% Load required packages
-%%
+%% 
 
 \RequirePackage{setspace}[1998/04/8]
 
-%%
+%% 
 %% Default Settings
-%%
+%% 
 
 % Default font point size
 \newcommand{\etdDefaultPointSize}{12pt}
 
 % Default line spacing
-%\newcommand{\etdDefaultSpacing}{\setstretch{1.37}}
+% \newcommand{\etdDefaultSpacing}{\setstretch{1.37}}
 \newcommand{\etdDefaultSpacing}{\doublespacing}
 
 % Parent document class
@@ -108,9 +116,9 @@
 % Adds to the margin size (initially 1in)
 \newcommand{\etdMarginAdjust}{0.0in}
 \newcommand{\etdHeadingMarginAdjust}{0.0in}
-%%
+%% 
 %% Declare arguments/options
-%%
+%% 
 
 % TOC Options
 \let\iftocflag=\iffalse
@@ -250,13 +258,13 @@
     \setlength{\topmargin}{0in}   % back to 1in
   }}
 
-
 \renewcommand{\@makeschapterhead}[1]{{  
     \setlength{\topmargin}{0.5in}   % really 1.5in, added by bph
     % to meet OAP standards
     \normalfont\large\bfseries
     \begin{center}
       \etdChapterHeadFormat{#1}                       %     TITLE OF CHAPTER
+      \vspace{1em}
     \end{center}
     \setlength{\topmargin}{0in}   % back to 1in
   }}
