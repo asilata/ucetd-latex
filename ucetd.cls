@@ -204,6 +204,7 @@
 % Argument = bibliography file without the .bib extension.
 \newcommand{\makebibliography}[1]{
   \newpage
+  \phantomsection % For correct hyperref linking
   \addcontentsline{toc}{chapter}{References}
   \begin{singlespace}
     \bibliography{#1}
